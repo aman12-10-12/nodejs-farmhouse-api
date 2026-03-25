@@ -1,0 +1,56 @@
+# =============================================================================
+# Farm House — .gitignore
+# Git ignores these paths so they are not committed. Lines starting with # are
+# comments (Git supports comments in .gitignore).
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Dependencies (npm)
+# -----------------------------------------------------------------------------
+# Installed packages from npm. They can be huge and are reproducible from
+# package.json + package-lock.json via `npm install`, so we never commit them.
+node_modules/
+
+# -----------------------------------------------------------------------------
+# Project-specific (optional local files)
+# -----------------------------------------------------------------------------
+# Practice / scratch script not part of the main app. Remove this line if you
+# want basics.js tracked in git.
+/basics.js
+
+# Optional folder for local notes or exports (ignore if you use it for temp data).
+txt/
+/PROJECT_DESCRIPTION.md
+
+# -----------------------------------------------------------------------------
+# Environment and secrets
+# -----------------------------------------------------------------------------
+# If you later add API keys or ports in a .env file, keep it out of git.
+.env
+.env.*
+!.env.example
+
+# -----------------------------------------------------------------------------
+# Logs and debug output
+# -----------------------------------------------------------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# -----------------------------------------------------------------------------
+# Operating system junk
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# -----------------------------------------------------------------------------
+# Editor / IDE (optional — some teams commit .vscode; here we ignore IDE noise)
+# -----------------------------------------------------------------------------
+# Uncomment if you do not want to share editor settings:
+# .vscode/
+# *.swp
+# *.swo

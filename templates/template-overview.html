@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/ear-of-maize_1f33d.png"
+    />
+
+    <title>Farm House</title>
+
+    <style>
+      :root {
+        --color-text: #2d3a35;
+        --color-text-muted: #5a6b63;
+        --color-surface: #ffffff;
+        --color-accent-warm: #e8a838;
+        --color-accent-deep: #2e7d32;
+        --gradient-page: linear-gradient(
+          125deg,
+          #5cb85c 0%,
+          #26c6da 35%,
+          #7cb342 70%,
+          #00897b 100%
+        );
+        --gradient-card: linear-gradient(145deg, #66bb6a 0%, #26a69a 55%, #00acc1 100%);
+        --gradient-organic-text: linear-gradient(
+          90deg,
+          #2e7d32 0%,
+          #00897b 50%,
+          #00695c 100%
+        );
+        --shadow-card: 0 1.2rem 4rem rgba(13, 59, 46, 0.18);
+        --shadow-card-hover: 0 2rem 5rem rgba(13, 59, 46, 0.22);
+        --radius-card: 1.2rem;
+        --skew-desktop: -18deg;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      @media (max-width: 37.5em) {
+        html {
+          font-size: 56.25%;
+        }
+      }
+
+      @media (min-width: 112.5em) {
+        html {
+          font-size: 70%;
+        }
+      }
+
+      body {
+        padding: clamp(1.5rem, 4vw, 5rem) clamp(1rem, 3vw, 5rem)
+          clamp(3rem, 8vw, 10rem);
+        padding-bottom: max(3rem, env(safe-area-inset-bottom));
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        line-height: 1.7;
+        font-family: "Nunito Sans", sans-serif;
+        color: var(--color-text);
+        min-height: 100vh;
+        min-height: 100dvh;
+        background: var(--gradient-page);
+        background-size: 200% 200%;
+        animation: pageGradient 18s ease-in-out infinite;
+      }
+
+      @keyframes pageGradient {
+        0%,
+        100% {
+          background-position: 0% 40%;
+        }
+        50% {
+          background-position: 100% 60%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        body {
+          animation: none;
+          background-size: 100% 100%;
+        }
+      }
+
+      h1 {
+        font-family: "Megrim", sans-serif;
+        font-size: clamp(3.2rem, 7vw + 1rem, 7rem);
+        color: #fff;
+        text-shadow: 0 0.2rem 1.5rem rgba(0, 0, 0, 0.15);
+        transform: skewY(-4deg);
+        text-align: center;
+        position: relative;
+        word-spacing: 0.2em;
+        margin-bottom: clamp(0.5rem, 2vw, 2rem);
+      }
+
+      h1::before {
+        content: "";
+        display: block;
+        height: 65%;
+        width: min(49%, 28rem);
+        position: absolute;
+        top: 105%;
+        left: 50%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.35),
+          rgba(0, 137, 123, 0.35)
+        );
+        opacity: 0.85;
+        z-index: -1;
+        transform: skewY(370deg) translate(-50%, -50%);
+        border-radius: 0.4rem;
+      }
+
+      .container {
+        width: min(95rem, 100%);
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 clamp(0.5rem, 2vw, 1rem);
+      }
+
+      .cards-container {
+        margin-top: clamp(3rem, 8vw, 8rem);
+        display: grid;
+        gap: clamp(2rem, 4vw, 3rem);
+      }
+
+      .card {
+        background: var(--color-surface);
+        box-shadow: var(--shadow-card);
+        margin-bottom: 0;
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        transform: skewX(var(--skew-desktop));
+        display: flex;
+        flex-wrap: wrap;
+        transition: transform 0.45s ease, box-shadow 0.45s ease;
+      }
+
+      .card__emoji {
+        font-size: clamp(4rem, 6vw + 1rem, 5.5rem);
+        line-height: 1.2;
+        padding: 1.5rem clamp(1.5rem, 4vw, 6rem) 0.5rem 1.5rem;
+        letter-spacing: -4rem;
+        transform: skewX(calc(-1 * var(--skew-desktop)));
+      }
+
+      .card__title-box {
+        background: var(--gradient-card);
+        background-size: 150% 150%;
+        animation: cardTitleShine 12s ease infinite;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        padding: 0 clamp(1.5rem, 3vw, 3rem);
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+
+      @keyframes cardTitleShine {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card__title-box {
+          animation: none;
+          background-size: 100% 100%;
+        }
+      }
+
+      .card__title {
+        font-family: "Megrim", sans-serif;
+        color: #fff;
+        font-size: clamp(1.8rem, 2.5vw + 1rem, 2.6rem);
+        transform: skewX(calc(-1 * var(--skew-desktop)));
+        text-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+        word-break: break-word;
+      }
+
+      .card__details {
+        display: flex;
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+        min-width: 0;
+      }
+
+      .card__detail-box {
+        align-self: stretch;
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+      }
+
+      .card__detail-box:last-child {
+        border-right: none;
+      }
+
+      .card__detail {
+        font-weight: 400;
+        font-size: clamp(1.5rem, 1.5vw + 1rem, 1.85rem);
+        transform: skewX(calc(-1 * var(--skew-desktop)));
+        padding: clamp(1.2rem, 2vw, 1.75rem);
+        color: var(--color-text-muted);
+      }
+
+      .card__detail--organic {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: clamp(1.55rem, 1.6vw + 1rem, 1.95rem);
+        background-image: var(--gradient-organic-text);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card__detail--price {
+        font-weight: 900;
+        font-size: clamp(1.55rem, 1.6vw + 1rem, 1.95rem);
+        color: var(--color-accent-deep);
+      }
+
+      .card__link:link,
+      .card__link:visited {
+        flex: 1 1 100%;
+        background: linear-gradient(135deg, #43a047 0%, #00897b 100%);
+        color: #fff;
+        font-size: clamp(1.4rem, 1.2vw + 1rem, 1.65rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: filter 0.3s ease, transform 0.25s ease;
+      }
+
+      .card__link:hover,
+      .card__link:active {
+        filter: brightness(1.08) saturate(1.05);
+      }
+
+      .card__link span {
+        transform: skewX(calc(-1 * var(--skew-desktop)));
+      }
+
+      .card:hover {
+        transform: skewX(var(--skew-desktop)) scale(1.03);
+        box-shadow: var(--shadow-card-hover);
+      }
+
+      .emoji-left {
+        font-size: clamp(1.6rem, 2vw, 2rem);
+        margin-right: 1rem;
+      }
+
+      .emoji-right {
+        font-size: clamp(1.6rem, 2vw, 2rem);
+        margin-left: 1rem;
+      }
+
+      .not-organic {
+        display: none;
+      }
+
+      /* Mobile */
+      @media (max-width: 37.4375em) {
+        :root {
+          --skew-desktop: 0deg;
+        }
+
+        .card {
+          flex-direction: column;
+          transform: none;
+          border-radius: 1rem;
+        }
+
+        .card__emoji {
+          text-align: center;
+          padding: 1.5rem 1rem 0.5rem;
+          letter-spacing: -2rem;
+        }
+
+        .card__title-box {
+          margin-right: 0;
+          justify-content: center;
+          padding: 1.25rem 1rem;
+          width: 100%;
+        }
+
+        .card__title {
+          text-align: center;
+        }
+
+        .card__details {
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .card__detail-box {
+          border-right: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+          justify-content: center;
+          width: 100%;
+        }
+
+        .card__detail-box:last-of-type {
+          border-bottom: none;
+        }
+
+        .card__detail {
+          text-align: center;
+        }
+
+        .card__link:link,
+        .card__link:visited {
+          flex: 1 1 auto;
+        }
+
+        .card:hover {
+          transform: scale(1.02);
+        }
+      }
+
+      /* Tablet */
+      @media (min-width: 37.5em) and (max-width: 56.1875em) {
+        :root {
+          --skew-desktop: -10deg;
+        }
+
+        .card__details {
+          flex-wrap: wrap;
+        }
+
+        .card__detail-box {
+          flex: 1 1 33%;
+          min-width: min(100%, 14rem);
+        }
+
+        .card__link:link,
+        .card__link:visited {
+          flex: 1 1 100%;
+        }
+      }
+
+      /* Large / TV */
+      @media (min-width: 90em) {
+        .container {
+          max-width: min(120rem, 96vw);
+        }
+
+        .cards-container {
+          gap: clamp(2.5rem, 2vw, 4rem);
+        }
+
+        .card:hover {
+          transform: skewX(var(--skew-desktop)) scale(1.04);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🌽 Farm House 🥦</h1>
+
+      <div class="cards-container">
+        {%PRODUCT_CARDS%}
+      </div>
+    </div>
+  </body>
+</html>
