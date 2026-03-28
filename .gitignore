@@ -20,7 +20,7 @@ node_modules/
 
 # Optional folder for local notes or exports (ignore if you use it for temp data).
 txt/
-/PROJECT_DESCRIPTION.md
+PROJECT_DESCRIPTION.md
 
 # -----------------------------------------------------------------------------
 # Environment and secrets
@@ -54,3 +54,4 @@ Desktop.ini
 # .vscode/
 # *.swp
 # *.swo
+.vscode/
